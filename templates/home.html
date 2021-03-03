@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <title>My Blog</title>
+</head>
+<body>
+    {% load static %}
+     <header>
+       <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <div class="container-fluid">
+         <a class="navbar-brand" href="/home.html">My Blog</a>
+        </div>
+       </nav>
+     </header>
+     <div class="container">
+       {% block content %}
+         {% for i in object_list %}
+             <div class="article">
+             <h3><a href="{% url 'detail' i.pk %}">{{ i.title }}</a></h3>
+               <p>{{ i.body }}</p>
+
+            </div>
+         {% endfor %}
+        {% endblock content %}
+     </div>
+ </body>
+</html>
